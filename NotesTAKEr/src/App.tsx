@@ -53,7 +53,7 @@ function App() {
     <Routes>
       <Route path="/" element={<h1>Hello there, and welcome to NotesTAKEr!</h1>} />
       <Route path="/author" element={<h1>Welcome to the about author page!</h1>} />
-      <Route path="/new" element={<NewNote />} />
+      <Route path="/new" element={<NewNote onSubmit={onCreateNote}/>} />
       <Route path="/:id">
         <Route index element={<h1>Show</h1>} />
         <Route path="edit" element={<h1>Edit</h1>} />
