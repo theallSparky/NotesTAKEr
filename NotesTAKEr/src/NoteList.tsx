@@ -26,7 +26,7 @@ export function NoteList({ availableTags, notes }: NoteListProps) {
         })
     }, [title, selectedTags, notes])
 
-    return <>
+    return (<>
         <Row className="align-items-center mb-4">
             <Col><h1>Notes</h1></Col>
             <Col xs="auto">
@@ -78,6 +78,7 @@ export function NoteList({ availableTags, notes }: NoteListProps) {
             })}
         </Row>
     </>
+    )
 }
 
 function NoteCard({ id, title, tags }: SimplifiedNote) {

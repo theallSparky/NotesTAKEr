@@ -13,3 +13,7 @@ export function NoteLayout({ notes}: NoteLayoutProps) {
 
     return <Outlet context={note}/>
 }
+
+export function useNote() {
+    return useOutletContext<Note>()
+}
