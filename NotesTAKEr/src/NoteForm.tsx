@@ -11,10 +11,10 @@ type NoteFormProps = {
     availableTags: Tag[]
 } & Partial<NoteData>
 
-export function NoteForm({ onSubmit, onAddTag, availableTags }: NoteFormProps) {
+export function NoteForm({ onSubmit, onAddTag, availableTags, title = "", markdown = "", tags = [] }: NoteFormProps) {
     const titleRef = useRef<HTMLInputElement>(null)
     const markdownRef = useRef<HTMLTextAreaElement>(null)
-    const [selectedTags, setSelectedTags] = useState<Tag[]>([])
+    const [selectedTags, setSelectedTags] = useState<Tag[]>(tags)
     const navigate = useNavigate()
 
     function handleSubmit (e: FormEvent) {
@@ -67,7 +67,12 @@ export function NoteForm({ onSubmit, onAddTag, availableTags }: NoteFormProps) {
                 </Row>
                 <Form.Group controlId='markdown'>
                     <Form.Label>Body</Form.Label>
-                    <Form.Control required as="textarea" ref={markdownRef} rows={10} />
+                    <Form.Control 
+                    defaultValue={markdown}
+                    required 
+                    as="textarea" 
+                    ref={markdownRef} 
+                    rows={10} />
                     <CreatableReactSelect isMulti />
                     <Form.Select required />
                 </Form.Group>

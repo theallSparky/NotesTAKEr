@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Badge, Button, Card, Col, Form, Row, Stack } from "react-bootstrap";
+import { Badge, Button, Card, Col, Form, Modal, Row, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import reactSelect from "react-select";
 import { Tag } from "./App";
@@ -26,7 +26,8 @@ export function NoteList({ availableTags, notes }: NoteListProps) {
         })
     }, [title, selectedTags, notes])
 
-    return (<>
+    return (
+    <>
         <Row className="align-items-center mb-4">
             <Col><h1>Notes</h1></Col>
             <Col xs="auto">
@@ -77,6 +78,7 @@ export function NoteList({ availableTags, notes }: NoteListProps) {
                 </Col>
             })}
         </Row>
+        <editTagsModal />
     </>
     )
 }
@@ -98,4 +100,30 @@ function NoteCard({ id, title, tags }: SimplifiedNote) {
             </Stack>
         </Card.Body>
     </Card>
+}
+
+function EditTagsModal({ availableTags }) {
+    return (
+        <Modal>
+            <Modal.Header closeButton>
+                <Modal.Title>Edit Tags</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form>
+                    <Stack gap={2}>
+                        {availableTags.map(tag => (
+                            <Row key={tag.id}>
+                                <Col>
+                                    <Form></Form>
+                                </Col>
+                                <Col xs="auto">
+                                    <Button variant="outline-danger">&times;</Button>
+                                </Col>
+                            </Row>
+                        ))}
+                    </Stack>
+                </Form>
+            </Modal.Body>
+        </Modal>
+    )
 }
