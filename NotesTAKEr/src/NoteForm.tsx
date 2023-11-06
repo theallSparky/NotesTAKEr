@@ -44,7 +44,7 @@ export function NoteForm({ onSubmit, onAddTag, availableTags, title = "", markdo
                             <Form.Label>Tags</Form.Label>
                             <CreatableReactSelect
                             onCreateOption={label => {
-                                const newTag = { id: uuidV4(), label }
+                                const newTag = { id: uuidv4(), label }
                                 onAddTag(newTag)
                                 setSelectedTags(prev => [...prev, newTag])
                             }}
